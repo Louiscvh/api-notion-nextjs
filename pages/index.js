@@ -6,7 +6,6 @@ const { Client } = require("@notionhq/client");
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
 export default function Home({ students }) {
-  console.log(students);
   return (
     <div className={styles.container}>
       <Head>
@@ -30,11 +29,13 @@ export default function Home({ students }) {
               href="https://nextjs.org/docs"
               className={styles.card}
             >
-              <h2>{student.properties.Name.title[0].text.content} &rarr;</h2>
-              <p>{student.properties.Age.number}</p>
+              <h2>{student.properties.Name.title[0]?.text.content || 'No name'} &rarr;</h2>
+              <p>{student.properties.Age.number || 'No age'}</p>
+              <div className={styles.card__grid}>
               {student.properties.Knowledge.multi_select.map(know => (
                 <span>{know.name}</span>
               ))}
+              </div>
             </a>
           ))}
         </div>

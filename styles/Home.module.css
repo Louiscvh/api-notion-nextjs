@@ -12,6 +12,18 @@
   align-items: center;
 }
 
+.main .card__grid {
+  display: flex;
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.main .card__grid span {
+  padding: 10px;
+  background-color: antiquewhite;
+  border-radius: 8px;
+}
+
 .footer {
   display: flex;
   flex: 1;
